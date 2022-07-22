@@ -26,7 +26,6 @@ router.post('/create',async (req, res) => {
         res.redirect("/employ/list")
 })
 
-
 router.get('/delete/:id',async (req, res) => {
         const employ = await Employ.findOne({_id: req.params.id}).populate('phongban');
         const phongban=await Branch.findOne({_id:employ.phongban._id})
@@ -34,52 +33,30 @@ router.get('/delete/:id',async (req, res) => {
         await employ.remove();
         res.redirect("/employ/list")
 })
-
-
-
 router.get('/update/:id', async (req, res) => {
-
-
-
         const employ = await Employ.findOne({_id: req.params.id})
             .populate("phongban")
-
             res.render('updateEmploy', {employ: employ})
 
 })
 
 router.post('/update', async (req, res) => {
-
     //cap nhat collection Book
-
     const employUpdate = await Employ.findOne({_id: req.body.idUpdate}).populate('phongban');
-
-
     employUpdate.ma = req.body.ma;
     employUpdate.ten = req.body.ten;
     employUpdate.tuoi = req.body.tuoi;
     employUpdate.luong = req.body.luong;
     employUpdate.luong = req.body.luong;
-
     await employUpdate.save();
 
 
     const phongban = await Branch.findOne({_id: employUpdate.phongban._id})
     phongban.ten = req.body.phongban
     await phongban.save();
-
     res.redirect('/employ/list')
 
 })
-
-
-
-
-
-
-
-
-
 
 
 router.get('/list',async (req, res)=>{
