@@ -1,69 +1,37 @@
 import express from "express";
-import {Employ} from "../schemas/employ.model";
-import {Branch} from "../schemas/branch.model";
 const router=express.Router();
 
+import EmployController from "../controller/employ.controller";
+
+//Giao dien khi bắt đầu vào
+router.get('/',EmployController.getListEmployAll);
 
 
-router.get('/create',(req, res) => {
-    res.render('createEmploy')
-})
+//Giao dien khi an nut Add
+router.get('/create',EmployController.getAdd)
 
-router.post('/create',async (req, res) => {
-     const newBranch = new Branch({
-            ten: req.body.phongban
-        })
-    await newBranch.save();
-        const newEmploy = new Employ({
-            ma: req.body.ma,
-            ten: req.body.ten,
-            tuoi: req.body.tuoi,
-            luong: req.body.luong,
-            phongban:newBranch
-
-        })
-    await newEmploy.save();
-        res.redirect("/employ/list")
-})
-
-router.get('/delete/:id',async (req, res) => {
-        const employ = await Employ.findOne({_id: req.params.id}).populate('phongban');
-        const phongban=await Branch.findOne({_id:employ.phongban._id})
-        await phongban.remove()
-        await employ.remove();
-        res.redirect("/employ/list")
-})
-router.get('/update/:id', async (req, res) => {
-        const employ = await Employ.findOne({_id: req.params.id})
-            .populate("phongban")
-            res.render('updateEmploy', {employ: employ})
-
-})
-
-router.post('/update', async (req, res) => {
-    //cap nhat collection Book
-    const employUpdate = await Employ.findOne({_id: req.body.idUpdate}).populate('phongban');
-    employUpdate.ma = req.body.ma;
-    employUpdate.ten = req.body.ten;
-    employUpdate.tuoi = req.body.tuoi;
-    employUpdate.luong = req.body.luong;
-    employUpdate.luong = req.body.luong;
-    await employUpdate.save();
+//Trong giao dien add khi ấn nút add submit form post
+router.post('/create',EmployController.postAdd)
 
 
-    const phongban = await Branch.findOne({_id: employUpdate.phongban._id})
-    phongban.ten = req.body.phongban
-    await phongban.save();
-    res.redirect('/employ/list')
 
-})
+// Khi an nut xóa nhan vien
+router.get('/delete/:id',EmployController.deteteEmploy)
 
 
-router.get('/list',async (req, res)=>{
-    const employ = await Employ.find()
-        .populate("phongban").sort("tuoi")
-    res.render("listEmploy", {employs: employ});
-})
+
+//giao dien khi an nut update
+router.get('/update/:id', EmployController.getUpdate)
+
+//trong giao dien update khi an submit form method post
+router.post('/update', EmployController.postUpdate)
+
+
+//khi an vao ten nhan vien hien thi chi tiet nhan vien
+router.get('/detail/:id', EmployController.detailEmploy)
+
+
+
 
 
 

@@ -5,68 +5,36 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Add Employ</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
 
-
 <div class="page-heading">
-    <h1>Register a new employ</h1>
+    <h1>Add a new employ</h1>
 </div>
-<form action="/employ/create" method="POST">
+<form action="/create" method="POST">
 
-    <div class="control-group">
-        <div class="form-group floating-label-form-group controls">
-            <label>ma</label>
-            <input type="text" class="form-control" id="name" name="ma">
-        </div>
-    </div>
+    <label>ma</label>
+    <input type="text" class="form-control" id="name" name="ma">
 
-    <div class="control-group">
-        <div class="form-group floating-label-form-group controls">
-            <label>ten</label>
-            <input type="text" class="form-control" id="author" name="ten">
-        </div>
-    </div>
+    <label>ten</label>
+    <input type="text" class="form-control" id="author" name="ten">
 
-    <div class="control-group">
-        <div class="form-group floating-label-form-group controls">
-            <label>tuoi</label>
-            <input type="text" class="form-control" id="keyword" name="tuoi">
-        </div>
-    </div>
+    <label>tuoi</label>
+    <input type="text" class="form-control" id="keyword" name="tuoi">
 
-    <div class="control-group">
-        <div class="form-group floating-label-form-group controls">
-            <label>luong</label>
-            <input type="text" class="form-control" id="category" name="luong">
-        </div>
-    </div>
+    <label>luong</label>
+    <input type="text" class="form-control" id="category" name="luong">
 
-    <div class="control-group">
-        <div class="form-group floating-label-form-group controls">
-            <label>phong ban</label>
-            <input type="text" class="form-control" id="publisher" name="phongban">
-        </div>
-    </div>
+    <label>phong ban</label>
+    <input type="text" class="form-control" id="publisher" name="phongban">
 
+    <button type="submit" class="btn btn-primary">Create</button>
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-    </div>
 </form>
-
-
-
-
-
-
-
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

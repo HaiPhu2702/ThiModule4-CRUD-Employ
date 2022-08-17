@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>List Employ</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -13,14 +13,15 @@
 
 
 <h2>List Employ</h2>
-<button type="button" class="btn btn-primary" style="color: white !important"><a href="/employ/create"
-                                                                                 style="color: white !important">ADD</a>
+<button type="button" class="btn btn-primary" style="color: white !important">
+    <a href="/create" style="color: white !important">ADD</a>
 </button>
-
+<br/>
+<br/>
 
 <table class="table">
     <thead>
-    <tr>
+    <tr style="text-align: center">
         <th scope="col">ma</th>
         <th scope="col">ten</th>
         <th scope="col">tuoi</th>
@@ -31,18 +32,23 @@
     </thead>
     <tbody>
     <% for(const employ of employs) { %>
-        <tr>
-            <th scope="row"><%= employ.ma %></th>
-            <td> <%= employ.ten %></td>
+        <tr style="text-align: center">
+            <td><%= employ.ma %></td>
+            <td>
+                <a href=/detail/<%= employ.id %>><%= employ.ten %></a>
+            </td>
             <td><%= employ.tuoi %></td>
             <td><%= employ.luong %></td>
             <td> <%= employ.phongban.ten %></td>
             <td>
-                <button type="button" class="btn btn-primary"><a href="/employ/update/<%= employ.id %>" style="color:#fff"> Update </a></button>
-                <button type="button" class="btn btn-danger"><a href="/employ/delete/<%= employ.id %>" style="color:#fff" onclick="return confirm('Are you sure')"> Delete </a></button>
+                <button type="button" class="btn btn-primary">
+                    <a href="/update/<%= employ.id %>" style="color:#fff;margin:10px"> Update</a>
+                </button>
+
+                <button type="button" class="btn btn-danger">
+                    <a href="/delete/<%= employ.id %>" style="color:#fff;margin:10px" onclick="return confirm('Are you sure')"> Delete </a>
+                </button>
             </td>
-
-
         </tr>
     <% } %>
 
