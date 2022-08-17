@@ -4,7 +4,7 @@ import  mongoose from "mongoose";
 import employRouter from "./src/router/employ.router"
 const port=8080;
 
-mongoose.connect('mongodb://localhost:27017/ThiModule4').then(()=>{
+mongoose.connect('mongodb+srv://root:Password@thimodule4.ecvui3h.mongodb.net/DataThiModule4_1103?retryWrites=true&w=majority').then(()=>{
     console.log("success")
 }).catch((err)=>{throw err})
 
